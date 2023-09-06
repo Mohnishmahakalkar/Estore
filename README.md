@@ -4,14 +4,14 @@ Description : Estore is app made with react native as a fontend framework with a
 
 Note : Following instructions is for Ubuntu OS
 
-Prerequists :
+# Prerequists
 
 1 : node 16 and npm(node package manager) above installed
 2 : Android Studio installed with sdk and global variable set and configured.
 
 please reffer official documentation for setup : https://reactnative.dev/docs/environment-setup?guide=native
 
-How To start
+# How To Start
 
 Step 1 : Clone the repository to local , the repository contains two folder named Frontend and Backend.
 
