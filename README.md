@@ -7,6 +7,7 @@ Note : Following instructions is for Ubuntu OS
 # Prerequists
 
 1 : node 16 and npm(node package manager) above installed
+
 2 : Android Studio installed with sdk and global variable set and configured.
 
 please reffer official documentation for setup : https://reactnative.dev/docs/environment-setup?guide=native
