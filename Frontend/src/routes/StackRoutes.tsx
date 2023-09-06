@@ -2,7 +2,6 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../login/Login';
 import {LIGHT_COLORS} from '../theme/colors';
-import dashboard from '../dashboard/Dashboard';
 import {IconButton} from 'react-native-paper';
 import {Badge} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
@@ -33,7 +32,7 @@ const StackRoutes = () => {
             title: 'Estore',
             headerTitleStyle: {
               fontFamily: 'StylishCalligraphyDemo-XPZZ',
-              fontSize: 32,
+              fontSize: 42,
             },
             headerTintColor: 'white',
             // eslint-disable-next-line react/no-unstable-nested-components

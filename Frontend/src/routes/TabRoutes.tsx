@@ -5,10 +5,7 @@ import {BottomNavigation, Text} from 'react-native-paper';
 import {LIGHT_COLORS} from '../theme/colors';
 import {Home} from '../pages/Home';
 import Discount from '../pages/Discount';
-
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
+import Cart from '../pages/Cart';
 
 const TabRoutes = () => {
   const [index, setIndex] = React.useState(0);
@@ -36,7 +33,7 @@ const TabRoutes = () => {
   const renderScene = BottomNavigation.SceneMap({
     home: Home,
     discount: Discount,
-    cart: RecentsRoute,
+    cart: Cart,
   });
 
   return (
