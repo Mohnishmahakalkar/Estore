@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
-import DiscountItemCard from '../components/DiscountItemCard';
+import DiscountItemCard from '../components/cards/DiscountItemCard';
 
 const Discount = () => {
   const data = Array.from({length: 1}, (_, index) => ({key: `${index}`}));

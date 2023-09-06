@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import {LIGHT_COLORS} from '../theme/colors';
+import {LIGHT_COLORS} from '../../theme/colors';
 
 const DiscountItemCard = props => {
   const Name = props?.name || 'Name Placeholder';
@@ -14,7 +14,7 @@ const DiscountItemCard = props => {
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../../assets/Placeholder.png')}
+        source={require('../../../assets/Placeholder.png')}
       />
       <View style={styles.textContainer}>
         <Text style={styles.name}>{Name}</Text>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
-import ItemCard from '../components/ItemCard';
+import ItemCard from '../components/cards/ItemCard';
 
 export const Home = () => {
   const data = Array.from({length: 8}, (_, index) => ({key: `${index}`}));
