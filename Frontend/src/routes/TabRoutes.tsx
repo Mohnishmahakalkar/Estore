@@ -7,6 +7,10 @@ import {Home} from '../pages/Home';
 import Discount from '../pages/Discount';
 import Cart from '../pages/Cart';
 import {StyleSheet, View} from 'react-native';
+import axios from 'axios';
+import {BACKEND_URL} from '../constants/constants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
 
 const TabRoutes = ({navigation}: any) => {
   const [index, setIndex] = React.useState(0);
@@ -31,7 +35,28 @@ const TabRoutes = ({navigation}: any) => {
     },
   ]);
 
+  const dispatch = useDispatch();
+
+  const getLoggedInUserData = async () => {
+    const access_token = await AsyncStorage.getItem('Token');
+    try {
+      const response = await axios({
+        method: 'get',
+        url: `${BACKEND_URL}user/profile`,
+        headers: {
+          Authorization: access_token,
+        },
+      });
+      if (response?.data) {
+        dispatch({type: 'SET_USER', payload: response?.data});
+      }
+    } catch (error) {
+      console.log(error, 'error');
+    }
+  };
+
   React.useEffect(() => {
+    getLoggedInUserData();
     navigation.setOptions({
       headerRight: () => {
         return (

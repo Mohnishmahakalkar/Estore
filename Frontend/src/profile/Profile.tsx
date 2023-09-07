@@ -1,24 +1,44 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import {LIGHT_COLORS} from '../theme/colors';
+import {useSelector} from 'react-redux';
+import {Button, Text} from 'react-native-paper';
 
 const Profile = () => {
-  //https://in.linkedin.com/in/mohnishmahakalkar
+  const user = useSelector((store): any => store.user.user);
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         source={{
-          uri: 'https://ca.slack-edge.com/T048WMUQN0N-U049FV7L4TB-728627321382-512',
+          uri: `${user.profile_pic}`,
         }}
       />
-      <Text style={styles.name}>Mohnish Mahakalkar</Text>
-      {/* <View style={styles.socialContainer}>
-        <Text style={styles.socialHead}>
-          https://in.linkedin.com/in/mohnishmahakalkar
+      <Text style={styles.name}>
+        {user.first_name} {user.last_name}
+      </Text>
+      <Button
+        mode="outlined"
+        onPress={() => console.log('hello')}
+        style={{
+          borderWidth: 2,
+          borderColor: LIGHT_COLORS.TextColor,
+          backgroundColor: LIGHT_COLORS.StatusBar,
+          width: '40%',
+          height: 60,
+          alignContent: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text
+          variant="headlineMedium"
+          style={{
+            fontFamily: 'StylishCalligraphyDemo-XPZZ',
+          }}>
+          Logout
         </Text>
-      </View> */}
+      </Button>
     </View>
   );
 };

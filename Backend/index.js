@@ -56,13 +56,13 @@ app.post("/login", (req, res) => {
   return res.status(200).send({ token: token });
 });
 
-app.get("/user/profile/:id", (req, res) => {
-  console.log(req.params.id, "req");
+app.get("/user/profile/", (req, res) => {
+  const token = jwt.decode(req?.headers?.authorization, "encrypt");
 
   let userdata = false;
 
   USER_CREDS.forEach((user) => {
-    if (user.user_data.user_id == req.params.id) {
+    if (user.user_data.user_id == token.userID) {
       userdata = user;
     }
   });
@@ -76,6 +76,7 @@ app.get("/user/profile/:id", (req, res) => {
     first_name: userdata?.user_data?.first_name,
     last_name: userdata?.user_data?.last_name,
     user_id: userdata?.user_data?.user_id,
+    profile_pic: userdata?.user_data?.profile_pic,
   };
 
   return res.status(200).send(data);

@@ -4,6 +4,8 @@ import {LIGHT_COLORS, DARK_COLORS} from './src/theme/colors';
 import {NavigationContainer} from '@react-navigation/native';
 import StackRoutes from './src/routes/StackRoutes';
 import {PaperProvider} from 'react-native-paper';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -18,13 +20,15 @@ function App(): JSX.Element {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <SafeAreaView style={backgroundStyle}>
-          <StatusBar
-            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor={backgroundStyle.backgroundColor}
-          />
-          <StackRoutes />
-        </SafeAreaView>
+        <Provider store={store}>
+          <SafeAreaView style={backgroundStyle}>
+            <StatusBar
+              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+              backgroundColor={backgroundStyle.backgroundColor}
+            />
+            <StackRoutes />
+          </SafeAreaView>
+        </Provider>
       </NavigationContainer>
     </PaperProvider>
   );
