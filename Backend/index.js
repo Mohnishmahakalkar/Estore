@@ -3,7 +3,7 @@ const app = express(); // Create an ExpressJS app
 app.use(express.json());
 const jwt = require("jsonwebtoken");
 
-const { LOGGED_IN_USER, USER_CREDS } = require("./Data-Store");
+const { USER_CREDS, PRODUCTS } = require("./Data-Store");
 
 app.get("/", (req, res) => {
   res.status(200).send("hello world");
@@ -56,7 +56,7 @@ app.post("/login", (req, res) => {
   return res.status(200).send({ token: token });
 });
 
-app.get("/user/profile/", (req, res) => {
+app.get("/user/profile", (req, res) => {
   const token = jwt.decode(req?.headers?.authorization, "encrypt");
 
   let userdata = false;
@@ -80,6 +80,26 @@ app.get("/user/profile/", (req, res) => {
   };
 
   return res.status(200).send(data);
+});
+
+app.get("/products", (req, res) => {
+  return res.status(200).send(PRODUCTS);
+});
+
+app.get("/product/:id", (req, res) => {
+  let productFound = false;
+
+  PRODUCTS.forEach((product) => {
+    if (product.product_id == req.params.id) {
+      productFound = product;
+    }
+  });
+
+  if (!productFound) {
+    return res.status(404).send({ msg: "Product Not Found", status: false });
+  }
+
+  return res.status(200).send(productFound);
 });
 
 const port = 3001; // Port we will listen on

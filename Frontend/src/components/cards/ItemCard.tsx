@@ -3,11 +3,12 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 import {LIGHT_COLORS} from '../../theme/colors';
 
 const ItemCard = props => {
-  const Name = props?.name || 'Name Placeholder';
+  console.log(props?.data);
+  const Name = props?.data?.product_name || 'Name Placeholder';
   const Description =
-    props?.description ||
+    props?.data?.description ||
     'Description Placeholder Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, ex voluptas architecto unde, magni temporibus quaerat adipisci rerum expedita culpa repellendus. Doloremque doloribus ipsum est, asperiores quidem exercitationem recusandae? Beatae.';
-  const Price = props?.price || 'Price Placeholder';
+  const Price = props?.data?.price || 'Price Placeholder';
 
   return (
     <View style={styles.container}>
@@ -22,7 +23,10 @@ const ItemCard = props => {
             ? Description.substring(0, 60) + '...'
             : Description}
         </Text>
-        <Text style={styles.price}>{Price}</Text>
+        <Text style={styles.price}>
+          {Price}
+          {' Rs'}
+        </Text>
       </View>
     </View>
   );
